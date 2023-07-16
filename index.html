@@ -18,19 +18,22 @@
             <form id="img-form" method="get">
                 <input id="input-buscar" type="text" placeholder="Busque por palabras..">
                 <input type="submit" value="Encontraré lo que busco" id="btn-buscar">
-                
+                <select name="orientacion" id="orientacion"></select>
             </form>
         </section>
 
         <section id="categorias" class="flexContainer"></section>
+
         <p id="msg"></p>
+
         <section id="img-buscadas" class="flexContainer"></section>
         
-        <nav id="paginacion">
-            <button id="prevPag">&lt;&lt;Página anterior</button>
-            <p id="pagNum">[-1-]</p>
-            <button id="sigPag">Página siguiente&gt;&gt;</button>
+        <nav id="paginacion" class = "nav">
+            <button id="prevPag" class="boton">&lt;&lt;Pág anterior</button>
+            <p id="pagNum"></p>
+            <button id="sigPag" class="boton">Pág siguiente&gt;&gt;</button>
         </nav>
+
     </main>
 
     <footer></footer>
