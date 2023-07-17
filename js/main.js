@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             limpiarLista();
             pintarBusqueda(urlCat);
             sigBtn.classList.remove('ocultar');
+            msg.innerHTML = `Supercars:`;
         };
 
         if (ev.target.id === '7236026') {
@@ -53,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             limpiarLista();
             pintarBusqueda(urlCat);
             sigBtn.classList.remove('ocultar');
+            msg.innerHTML = `Places to visit:`;
         };
 
         if (ev.target.id === '1099680') {
@@ -60,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             limpiarLista();
             pintarBusqueda(urlCat);
             sigBtn.classList.remove('ocultar');
+            msg.innerHTML = `World Foods:`;
         };
 
     });
@@ -109,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
             msg.innerHTML = `Resultados de "${inputBusqueda.value}":`;
             form.reset()
         };
-    }
+    };
 
     // función hace consultas
     const consultar = async (url) => {
@@ -184,6 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /// INVOCACIONES --->>>
 
-    pintarCategorias()
+    pintarCategorias();
 
-}) ////////////////////////////////////////
+}) //////////LOAD//////////
