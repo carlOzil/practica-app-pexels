@@ -8,67 +8,61 @@ document.addEventListener('DOMContentLoaded', () => {
     let inputBusqueda = document.querySelector('#input-buscar');
     let msg = document.querySelector('#msg');
     let listaImagenes = document.querySelector('#img-buscadas');
+    const listaCat = document.querySelector('#categorias');
+    let numPag = document.querySelector('#pagNum');
+    const prevBtn = document.querySelector("#prevPag")
+    const sigBtn = document.querySelector("#sigPag")
     let urlNext = '';
     let urlPrev = '';
     const tamanioPag = 6;
-    let numPag = document.querySelector('#pagNum');
-
-    const prevBtn = document.querySelector('#prevPag');
-    const sigBtn = document.querySelector('#sigPag');
-
-    const listaCat = document.querySelector('#categorias');
-
     const regExp = /^[a-zA-Z\s]+$/;
 
     const fragment = document.createDocumentFragment();
 
-
     /// EVENTOS --->>>
-    // para mostrar categorías(click) [boton mostrar ocultar]
-    // crear tres imagenes boton con imagen random para mostrar la busqueda de la palabra que nombre ese trend
 
-    // evento busca por palabras
+    // evento submit busca por palabras y orientación
     form.addEventListener('submit', (ev) => {
         ev.preventDefault();
         validarBusqueda();
-
+        sigBtn.classList.remove('ocultar')
     });
 
-    // para pasar paginas de la busqueda(click)
+    // evento click
     document.addEventListener('click', (ev) => {
         if (ev.target.id === 'prevPag') {
-
             limpiarLista();
             pintarBusqueda(urlPrev);
-
         };
-        if (ev.target.id === 'sigPag') {
 
+        if (ev.target.id === 'sigPag') {
             limpiarLista();
             pintarBusqueda(urlNext);
-
+            prevBtn.classList.remove('ocultar');
         };
-        if (ev.target.id === '8371843') {
+
+        if (ev.target.id === '638479') {
             const urlCat = `${urlBase}/search?query=cars&page=1&per_page=${tamanioPag}`;
             limpiarLista();
             pintarBusqueda(urlCat);
-
+            sigBtn.classList.remove('ocultar');
         };
-        if (ev.target.id === '14352566') {
-            const urlCat = `${urlBase}/search?query=colombia&page=1&per_page=${tamanioPag}`;
+
+        if (ev.target.id === '7236026') {
+            const urlCat = `${urlBase}/search?query=monuments&page=1&per_page=${tamanioPag}`;
             limpiarLista();
             pintarBusqueda(urlCat);
-
+            sigBtn.classList.remove('ocultar');
         };
-        if (ev.target.id === '8448162') {
+
+        if (ev.target.id === '1099680') {
             const urlCat = `${urlBase}/search?query=food&page=1&per_page=${tamanioPag}`;
             limpiarLista();
             pintarBusqueda(urlCat);
-
+            sigBtn.classList.remove('ocultar');
         };
+
     });
-
-
 
     /// FUNCIONES --->>>
 
@@ -81,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const cajaCat = document.createElement('FIGURE');
             const fotoCat = document.createElement('IMG');
-            const nameCat = document.createElement('H3');
+            const nameCat = document.createElement('H4');
 
             fotoCat.setAttribute('ID', id);
 
@@ -90,29 +84,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
             cajaCat.append(fotoCat);
             cajaCat.append(nameCat);
-            listaCat.append(cajaCat)
+            listaCat.append(cajaCat);
         };
     };
 
-    // función pinta mis 3 categorías al inicio
+    // función pinta mis 3 categorías iniciales
     const pintarCategorias = async () => {
 
-        const card1 = await crearCategoria('Supercars', '8371843');
-        const card2 = await crearCategoria('Colombia', '14352566');
-        const card3 = await crearCategoria('World Foods', '8448162');
+        await crearCategoria('Supercars', '638479');
+        await crearCategoria('Places', '7236026');
+        await crearCategoria('Foods', '1099680');
 
-    }
+    };
 
     // función valida busquedas
     const validarBusqueda = () => {
         if (!regExp.test(inputBusqueda.value)) {
             msg.innerHTML = 'Búsqueda no válida, prueba otra vez.';
-            limpiarLista()
-            form.reset()
+            limpiarLista();
+            form.reset();
         } else {
             limpiarLista();
             pintarBusqueda();
-            msg.innerHTML = `Mostrando resultados para "${inputBusqueda.value}":`;
+            msg.innerHTML = `Resultados de "${inputBusqueda.value}":`;
             form.reset()
         };
     }
@@ -137,7 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw ('Algo salió mal');
             };
 
-
         } catch (error) {
             return {
                 ok: false,
@@ -148,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // función pinta busquedas
     const pintarBusqueda = async (url) => {
-        pagActual = 1;
+        let pagActual = 1;
         let busquedaQuery = `${urlBase}/search?query=${inputBusqueda.value}&page=${pagActual}&per_page=${tamanioPag}`;
         if (url !== undefined) {
             busquedaQuery = url;
@@ -181,21 +174,13 @@ document.addEventListener('DOMContentLoaded', () => {
         listaImagenes.append(fragment)
     };
 
-    // función limpia lista buscada
+    // función limpia lista
     const limpiarLista = () => {
         if (listaImagenes) {
             listaImagenes.innerHTML = ''
         };
 
     };
-    // función limpia mensaje de respuesta a la busqueda
-    // const limpiarMensaje = () => {
-    //     if (msg) {
-    //         msg.innerHTML = '';
-    //     };
-    // };
-
-
 
     /// INVOCACIONES --->>>
 

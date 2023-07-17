@@ -11,29 +11,34 @@
 
 <body>
     <header>
-        <h1>\APIcar tecla conFETCH/</h1>
+        <h1>\APIcar tecla!/</h1>
     </header>
     <main>
         <section>
             <form id="img-form" method="get">
                 <input id="input-buscar" type="text" placeholder="Busque por palabras..">
-                <input type="submit" value="Encontraré lo que busco" id="btn-buscar">
-                <select name="orientacion" id="orientacion"></select>
+                <input type="submit" value="Find!" id="btn-buscar">
+                <select name="orientacion" id="orientacion" class="">
+                    <option value="">Todas</option>
+                    <option value="portrait">Vertical</option>
+                    <option value="landscape">Horizontal</option>
+                </select>
             </form>
         </section>
 
-        <section id="categorias" class="flexContainer"></section>
-
         <p id="msg"></p>
-
         <section id="img-buscadas" class="flexContainer"></section>
-        
-        <nav id="paginacion" class = "nav">
-            <button id="prevPag" class="boton">&lt;&lt;Pág anterior</button>
+
+        <nav id="paginacion" class="nav">
+            <button id="prevPag" class="boton ocultar">&lt;&lt;Prev</button>
             <p id="pagNum"></p>
-            <button id="sigPag" class="boton">Pág siguiente&gt;&gt;</button>
+            <button id="sigPag" class="boton ocultar">Next&gt;&gt;</button>
         </nav>
 
+        <div>
+            <h2>Favoritos:</h2>
+            <section id="categorias" class="flexContainer"></section>
+        </div>
     </main>
 
     <footer></footer>
