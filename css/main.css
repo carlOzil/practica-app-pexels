@@ -39,9 +39,11 @@ nav>* {
    display: inline;
    justify-content: center;
 }
-#pagNum {
 
+#pagNum {
+   font-size: 30px;
 }
+
 .ocultar {
    display: none;
 }
